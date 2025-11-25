@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AWVS - Web Scanner</title>
+</head>
+<body>
+
+    <h2>AWVS Web Scanner</h2>
+
+    <form method="POST">
+        <input type="text" name="url" placeholder="Enter URL to scan">
+        <button type="submit">Scan Now</button>
+    </form>
+
+    {% if report %}
+
+        <h3>Scan Results:</h3>
+        <p><b>URL:</b> {{ report["URL Scanned"] }}</p>
+        <p><b>Status:</b> {{ report["Status"] }}</p>
+
+        <h4>Vulnerabilities Found:</h4>
+        <ul>
+            {% for vul in report["Vulnerabilities"] %}
+            <li>{{ vul }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+</body>
+</html>
